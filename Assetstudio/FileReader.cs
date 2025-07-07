@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using static AssetStudio.ImportHelper;
@@ -239,7 +239,10 @@ namespace AssetStudio
                         reader = DecryptPerpetualNovelty(reader);
                         break;
                     case GameType.无期迷途:
-                        reader = Decryptwuqimitu(reader);
+                        reader = DecryptWuqimitu(reader);
+                        break;
+                    case GameType.火影忍者:
+                        reader = DecryptHuoyingrenzhe(reader);
                         break;
                 }
             }
