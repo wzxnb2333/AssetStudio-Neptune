@@ -163,6 +163,17 @@ namespace AssetStudio.GUI
             }
 
             specifyGame.Items.AddRange(GameManager.GetGames());
+            int selectedIndex = Properties.Settings.Default.selectedGame;
+            if (selectedIndex >= 0 && selectedIndex < specifyGame.Items.Count)
+            {
+                specifyGame.SelectedIndex = selectedIndex;
+            }
+            else
+            {
+                specifyGame.SelectedIndex = 0;
+                Properties.Settings.Default.selectedGame = 0;
+                Properties.Settings.Default.Save();
+            }
             specifyGame.SelectedIndex = Properties.Settings.Default.selectedGame;
             specifyGame.SelectedIndexChanged += new EventHandler(specifyGame_SelectedIndexChanged);
             Studio.Game = GameManager.GetGame(Properties.Settings.Default.selectedGame);
