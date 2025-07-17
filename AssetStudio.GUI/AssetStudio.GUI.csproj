@@ -10,7 +10,8 @@
     <Copyright>Copyright © Razmoth 2022; Copyright © Perfare 2018-2022</Copyright>
     <DebugType>embedded</DebugType>
     <AssemblyName>AssetStudio.GUI</AssemblyName>
-    <OutputPath>bin\$(Configuration)\</OutputPath> 
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+	<NoWarn>$(NoWarn);MSB3277</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
