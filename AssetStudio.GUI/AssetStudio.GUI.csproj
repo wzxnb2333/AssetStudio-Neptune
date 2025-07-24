@@ -11,7 +11,8 @@
     <DebugType>embedded</DebugType>
     <AssemblyName>AssetStudio.GUI</AssemblyName>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-	<NoWarn>$(NoWarn);MSB3277</NoWarn>
+    <NoWarn>$(NoWarn);MSB3277</NoWarn>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
   </PropertyGroup>
 
   <ItemGroup>
