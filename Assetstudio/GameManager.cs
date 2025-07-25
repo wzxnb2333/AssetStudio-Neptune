@@ -52,6 +52,7 @@ namespace AssetStudio
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.恋与深空)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.学园少女突袭者)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.来自星辰)));
+            Games.Add(index++, new Game(GameType.异界事务所));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.物华弥新)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.无期迷途)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.望月)));
@@ -181,6 +182,7 @@ namespace AssetStudio
         恋与深空,
         学园少女突袭者,
         来自星辰,
+        异界事务所,
         物华弥新,
         原神,
         崩坏三,
@@ -190,7 +192,7 @@ namespace AssetStudio
         望月,
         火影忍者,
         新月同行,
-        斗罗大陆_猎魂世界
+        斗罗大陆_猎魂世界,
     }
 
     public static class GameTypeMapper
@@ -240,6 +242,7 @@ namespace AssetStudio
         public static bool IsWangYue(this GameType type) => type == GameType.望月;
         public static bool IsLoveAndDeepspace(this GameType type) => type == GameTypeMapper.Map(GameType.恋与深空);
         public static bool IsExAstris(this GameType type) => type == GameTypeMapper.Map(GameType.来自星辰);
+        public static bool IsCounterSide(this GameType type) => type == GameTypeMapper.Map(GameType.异界事务所);
         public static bool IsPerpetualNovelty(this GameType type) => type == GameTypeMapper.Map(GameType.物华弥新);
         public static bool IsWuqimitu(this GameType type) => type == GameTypeMapper.Map(GameType.无期迷途);
         public static bool IsHuoyingrenzhe(this GameType type) => type == GameTypeMapper.Map(GameType.火影忍者);
