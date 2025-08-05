@@ -248,10 +248,10 @@ namespace AssetStudio
         public static bool IsExAstris(this GameType type) => type == GameTypeMapper.Map(GameType.来自星辰);
         public static bool IsCounterSide(this GameType type) => type == GameTypeMapper.Map(GameType.未来战);
         public static bool IsPerpetualNovelty(this GameType type) => type == GameTypeMapper.Map(GameType.物华弥新);
-        public static bool IsWuqimitu(this GameType type) => type == GameTypeMapper.Map(GameType.无期迷途);
-        public static bool IsHuoyingrenzhe(this GameType type) => type == GameTypeMapper.Map(GameType.火影忍者);
-        public static bool IsXinyuetongxing(this GameType type) => type == GameTypeMapper.Map(GameType.新月同行);
-        public static bool IsLiehunshijie(this GameType type) => type == GameTypeMapper.Map(GameType.斗罗大陆_猎魂世界);
+        public static bool IsWuQiMiTu(this GameType type) => type == GameTypeMapper.Map(GameType.无期迷途);
+        public static bool IsHuoYingRenZhe(this GameType type) => type == GameTypeMapper.Map(GameType.火影忍者);
+        public static bool IsXinYueTongXing(this GameType type) => type == GameTypeMapper.Map(GameType.新月同行);
+        public static bool IsLieHunShiJie(this GameType type) => type == GameTypeMapper.Map(GameType.斗罗大陆_猎魂世界);
         public static bool IsGuiLongChao(this GameType type) => type == GameTypeMapper.Map(GameType.归龙潮);
         public static bool IsArknights(this GameType type) => type == GameTypeMapper.Map(GameType.明日方舟);
         public static bool IsGIGroup(this GameType type) => type switch
