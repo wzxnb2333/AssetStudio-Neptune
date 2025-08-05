@@ -28,7 +28,7 @@ namespace AssetStudio
             Games.Add(index++, new Mhy(GameTypeMapper.Map(GameType.ZZZ_CB2), GIMhyShiftRow, GIMhyKey, GIMhyMul, null, GISBox, null, 0uL));
             Games.Add(index++, new Mhy(GameTypeMapper.Map(GameType.ZZZ), GIMhyShiftRow, GIMhyKey, GIMhyMul, null, GISBox, null, 0uL));
             Games.Add(index++, new Mr0k(GameTypeMapper.Map(GameType.TOT), Mr0kExpansionKey, initVector: Mr0kInitVector, blockKey: Mr0kBlockKey, postKey: ToTKey));
-            Games.Add(index++, new Game(GameType.崩坏学园2));
+            Games.Add(index++, new Game(GameTypeMapper.Map(GameType.崩坏学园2)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.永劫无间)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.偶像梦幻祭2)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.航海王热血航线)));
@@ -52,13 +52,14 @@ namespace AssetStudio
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.恋与深空)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.学园少女突袭者)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.来自星辰)));
-            Games.Add(index++, new Game(GameType.异界事务所));
+            Games.Add(index++, new Game(GameTypeMapper.Map(GameType.未来战)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.物华弥新)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.无期迷途)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.望月)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.火影忍者)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.新月同行)));
             Games.Add(index++, new Game(GameTypeMapper.Map(GameType.斗罗大陆_猎魂世界)));
+            Games.Add(index++, new Game(GameTypeMapper.Map(GameType.归龙潮)));
         }
         public static Game GetGame(GameType gameType) => GetGame((int)gameType);
         public static Game GetGame(int index)
@@ -182,7 +183,7 @@ namespace AssetStudio
         恋与深空,
         学园少女突袭者,
         来自星辰,
-        异界事务所,
+        未来战,
         物华弥新,
         原神,
         崩坏三,
@@ -193,6 +194,8 @@ namespace AssetStudio
         火影忍者,
         新月同行,
         斗罗大陆_猎魂世界,
+        归龙潮,
+        明日方舟,
     }
 
     public static class GameTypeMapper
@@ -218,7 +221,7 @@ namespace AssetStudio
     public static class GameTypes
     {
         public static bool IsNormal(this GameType type) => type == GameTypeMapper.Map(GameType.正常);
-        public static bool IsUnityCN(this GameType type) => type == GameTypeMapper.Map(GameType.UnityCN);
+        public static bool IsUnityCN(this GameType type) => type == GameTypeMapper.Map(GameType.UnityCN) || type == GameTypeMapper.Map(GameType.归龙潮);
         public static bool IsGI(this GameType type) => type == GameTypeMapper.Map(GameType.GI);
         public static bool IsGIPack(this GameType type) => type == GameTypeMapper.Map(GameType.GI_Pack);
         public static bool IsGICB1(this GameType type) => type == GameTypeMapper.Map(GameType.GI_CB1);
@@ -242,12 +245,14 @@ namespace AssetStudio
         public static bool IsWangYue(this GameType type) => type == GameType.望月;
         public static bool IsLoveAndDeepspace(this GameType type) => type == GameTypeMapper.Map(GameType.恋与深空);
         public static bool IsExAstris(this GameType type) => type == GameTypeMapper.Map(GameType.来自星辰);
-        public static bool IsCounterSide(this GameType type) => type == GameTypeMapper.Map(GameType.异界事务所);
+        public static bool IsCounterSide(this GameType type) => type == GameTypeMapper.Map(GameType.未来战);
         public static bool IsPerpetualNovelty(this GameType type) => type == GameTypeMapper.Map(GameType.物华弥新);
         public static bool IsWuqimitu(this GameType type) => type == GameTypeMapper.Map(GameType.无期迷途);
         public static bool IsHuoyingrenzhe(this GameType type) => type == GameTypeMapper.Map(GameType.火影忍者);
         public static bool IsXinyuetongxing(this GameType type) => type == GameTypeMapper.Map(GameType.新月同行);
         public static bool IsLiehunshijie(this GameType type) => type == GameTypeMapper.Map(GameType.斗罗大陆_猎魂世界);
+        public static bool IsGuiLongChao(this GameType type) => type == GameTypeMapper.Map(GameType.归龙潮);
+        public static bool IsArknights(this GameType type) => type == GameTypeMapper.Map(GameType.明日方舟);
         public static bool IsGIGroup(this GameType type) => type switch
         {
             GameType.原神 or GameType.GI_Pack or GameType.GI_CB1 or GameType.GI_CB2 or GameType.GI_CB3 or GameType.GI_CB3Pre => true,
@@ -274,7 +279,7 @@ namespace AssetStudio
 
         public static bool IsBlockFile(this GameType type) => type switch
         {
-            GameType.崩坏三 or GameType.BH3Pre or GameType.ZZZ_CB2 or GameType.ZZZ or GameType.崩坏星穹铁道 or GameType.GI_Pack or GameType.未定事件簿 or GameType.望月 or GameType.明日方舟_终末地 => true,
+            GameType.崩坏三 or GameType.BH3Pre or GameType.ZZZ_CB2 or GameType.ZZZ or GameType.崩坏星穹铁道 or GameType.GI_Pack or GameType.未定事件簿 or GameType.望月 or GameType.明日方舟_终末地 or GameType.归龙潮 => true,
             _ => false,
         };
 
