@@ -635,7 +635,7 @@ namespace AssetStudio.GUI
 
             loadAIToolStripMenuItem.Name = "loadAIToolStripMenuItem";
             loadAIToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            loadAIToolStripMenuItem.Text = "加载AI";
+            loadAIToolStripMenuItem.Text = "加载资源索引";
             loadAIToolStripMenuItem.Click += loadAIToolStripMenuItem_Click;
 
             loadCABMapToolStripMenuItem.Name = "loadCABMapToolStripMenuItem";
