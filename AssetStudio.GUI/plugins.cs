@@ -78,21 +78,10 @@ namespace AssetStudio.GUI
             return menuItem;
         }
 
-        public static ToolStripMenuItem CreateFsBankMenuItem()
-        {
-            var menuItem = new ToolStripMenuItem();
-            menuItem.Name = "toolStripMenuItem27";
-            menuItem.Size = new System.Drawing.Size(180, 22);
-            menuItem.Text = "FSB样本打包器";
-            menuItem.Visible = true;
-            menuItem.Click += FsBankToolStripMenuItem_Click;
-            return menuItem;
-        }
-
         public static ToolStripMenuItem CreateRioXMenuItem()
         {
             var menuItem = new ToolStripMenuItem();
-            menuItem.Name = "toolStripMenuItem28";
+            menuItem.Name = "toolStripMenuItem27";
             menuItem.Size = new System.Drawing.Size(180, 22);
             menuItem.Text = "RioX汉化版";
             menuItem.Visible = true;
@@ -103,7 +92,7 @@ namespace AssetStudio.GUI
         public static ToolStripMenuItem CreatePakExplorerMenuItem()
         {
             var menuItem = new ToolStripMenuItem();
-            menuItem.Name = "toolStripMenuItem29";
+            menuItem.Name = "toolStripMenuItem28";
             menuItem.Size = new System.Drawing.Size(180, 22);
             menuItem.Text = "LUCA system pak解包器";
             menuItem.Visible = true;
@@ -114,7 +103,7 @@ namespace AssetStudio.GUI
         public static ToolStripMenuItem CreatePSoundMenuItem()
         {
             var menuItem = new ToolStripMenuItem();
-            menuItem.Name = "toolStripMenuItem30";
+            menuItem.Name = "toolStripMenuItem29";
             menuItem.Size = new System.Drawing.Size(180, 22);
             menuItem.Text = "PlayStation音频提取器";
             menuItem.Visible = true;
@@ -125,7 +114,7 @@ namespace AssetStudio.GUI
         public static ToolStripMenuItem CreateWinAsarMenuItem()
         {
             var menuItem = new ToolStripMenuItem();
-            menuItem.Name = "toolStripMenuItem31";
+            menuItem.Name = "toolStripMenuItem30";
             menuItem.Size = new System.Drawing.Size(180, 22);
             menuItem.Text = "WinAsar汉化版";
             menuItem.Visible = true;
@@ -305,7 +294,6 @@ namespace AssetStudio.GUI
             var radVideoMenuItem = CreateRadVideoMenuItem();
             var quicbmsbatchMenuItem = CreateQuickBmsMenuItem();
             var superToolboxMenuItem = CreateSuperToolboxMenuItem();
-            var fsBankMenuItem = CreateFsBankMenuItem();
             var rioXMenuItem = CreateRioXMenuItem();
             var pakExplorerMenuItem = CreatePakExplorerMenuItem();
             var pSoundMenuItem = CreatePSoundMenuItem();
@@ -317,7 +305,6 @@ namespace AssetStudio.GUI
             pluginMenu.DropDownItems.Add(radVideoMenuItem);
             pluginMenu.DropDownItems.Add(quicbmsbatchMenuItem);
             pluginMenu.DropDownItems.Add(superToolboxMenuItem);
-            pluginMenu.DropDownItems.Add(fsBankMenuItem);
             pluginMenu.DropDownItems.Add(rioXMenuItem);
             pluginMenu.DropDownItems.Add(pakExplorerMenuItem);
             pluginMenu.DropDownItems.Add(pSoundMenuItem);
