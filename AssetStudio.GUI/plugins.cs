@@ -78,6 +78,61 @@ namespace AssetStudio.GUI
             return menuItem;
         }
 
+        public static ToolStripMenuItem CreateFsBankMenuItem()
+        {
+            var menuItem = new ToolStripMenuItem();
+            menuItem.Name = "toolStripMenuItem27";
+            menuItem.Size = new System.Drawing.Size(180, 22);
+            menuItem.Text = "FSB样本打包器";
+            menuItem.Visible = true;
+            menuItem.Click += FsBankToolStripMenuItem_Click;
+            return menuItem;
+        }
+
+        public static ToolStripMenuItem CreateRioXMenuItem()
+        {
+            var menuItem = new ToolStripMenuItem();
+            menuItem.Name = "toolStripMenuItem28";
+            menuItem.Size = new System.Drawing.Size(180, 22);
+            menuItem.Text = "RioX汉化版";
+            menuItem.Visible = true;
+            menuItem.Click += RioXToolStripMenuItem_Click;
+            return menuItem;
+        }
+
+        public static ToolStripMenuItem CreatePakExplorerMenuItem()
+        {
+            var menuItem = new ToolStripMenuItem();
+            menuItem.Name = "toolStripMenuItem29";
+            menuItem.Size = new System.Drawing.Size(180, 22);
+            menuItem.Text = "LUCA system pak解包器";
+            menuItem.Visible = true;
+            menuItem.Click += PakExplorerToolStripMenuItem_Click;
+            return menuItem;
+        }
+
+        public static ToolStripMenuItem CreatePSoundMenuItem()
+        {
+            var menuItem = new ToolStripMenuItem();
+            menuItem.Name = "toolStripMenuItem30";
+            menuItem.Size = new System.Drawing.Size(180, 22);
+            menuItem.Text = "PlayStation音频提取器";
+            menuItem.Visible = true;
+            menuItem.Click += PSoundToolStripMenuItem_Click;
+            return menuItem;
+        }
+
+        public static ToolStripMenuItem CreateWinAsarMenuItem()
+        {
+            var menuItem = new ToolStripMenuItem();
+            menuItem.Name = "toolStripMenuItem31";
+            menuItem.Size = new System.Drawing.Size(180, 22);
+            menuItem.Text = "WinAsar汉化版";
+            menuItem.Visible = true;
+            menuItem.Click += WinAsarToolStripMenuItem_Click;
+            return menuItem;
+        }
+
         private static void 万能二进制提取器ToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             var formFromExtractor = new FileExtractor();
@@ -142,6 +197,106 @@ namespace AssetStudio.GUI
             }
         }
 
+        private static void FsBankToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                string relativePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "fsbank.exe");
+                if (File.Exists(relativePath))
+                {
+                    Process.Start(relativePath);
+                }
+                else
+                {
+                    MessageBox.Show("未找到fsbank.exe文件，请检查路径。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"启动fsbank.exe时出错: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static void RioXToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                string relativePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "RioX汉化版.exe");
+                if (File.Exists(relativePath))
+                {
+                    Process.Start(relativePath);
+                }
+                else
+                {
+                    MessageBox.Show("未找到RioX汉化版.exe文件，请检查路径。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"启动RioX汉化版.exe时出错: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static void PakExplorerToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                string relativePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "pak_explorer.exe");
+                if (File.Exists(relativePath))
+                {
+                    Process.Start(relativePath);
+                }
+                else
+                {
+                    MessageBox.Show("未找到pak_explorer.exe文件，请检查路径。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"启动pak_explorer.exe时出错: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static void PSoundToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                string relativePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "PSound.exe");
+                if (File.Exists(relativePath))
+                {
+                    Process.Start(relativePath);
+                }
+                else
+                {
+                    MessageBox.Show("未找到PSound.exe文件，请检查路径。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"启动PSound.exe时出错: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static void WinAsarToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                string relativePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins", "WinAsar汉化版.exe");
+                if (File.Exists(relativePath))
+                {
+                    Process.Start(relativePath);
+                }
+                else
+                {
+                    MessageBox.Show("未找到WinAsar汉化版.exe文件，请检查路径。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"启动WinAsar汉化版.exe时出错: {ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public static void AddMenuItemsToPluginMenu(ToolStripMenuItem pluginMenu)
         {
             var extractorMenuItem = CreateDefaultExtractorMenuItem();
@@ -150,6 +305,11 @@ namespace AssetStudio.GUI
             var radVideoMenuItem = CreateRadVideoMenuItem();
             var quicbmsbatchMenuItem = CreateQuickBmsMenuItem();
             var superToolboxMenuItem = CreateSuperToolboxMenuItem();
+            var fsBankMenuItem = CreateFsBankMenuItem();
+            var rioXMenuItem = CreateRioXMenuItem();
+            var pakExplorerMenuItem = CreatePakExplorerMenuItem();
+            var pSoundMenuItem = CreatePSoundMenuItem();
+            var winAsarMenuItem = CreateWinAsarMenuItem();
 
             pluginMenu.DropDownItems.Add(extractorMenuItem);
             pluginMenu.DropDownItems.Add(removerMenuItem);
@@ -157,6 +317,11 @@ namespace AssetStudio.GUI
             pluginMenu.DropDownItems.Add(radVideoMenuItem);
             pluginMenu.DropDownItems.Add(quicbmsbatchMenuItem);
             pluginMenu.DropDownItems.Add(superToolboxMenuItem);
+            pluginMenu.DropDownItems.Add(fsBankMenuItem);
+            pluginMenu.DropDownItems.Add(rioXMenuItem);
+            pluginMenu.DropDownItems.Add(pakExplorerMenuItem);
+            pluginMenu.DropDownItems.Add(pSoundMenuItem);
+            pluginMenu.DropDownItems.Add(winAsarMenuItem);
         }
 
         public static void AddMenuItemsToMainForm(MainForm mainForm)
