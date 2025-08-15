@@ -870,7 +870,7 @@ namespace AssetStudio
 
         public static FileReader DecryptGirlsFrontline(FileReader reader)
         {
-            Logger.Verbose($"尝试去解密少女前线加密的文件{reader.FileName}");
+            Logger.Verbose($"尝试去解密少女前线2_追放加密的文件{reader.FileName}");
 
             var originalHeader = new byte[] { 0x55, 0x6E, 0x69, 0x74, 0x79, 0x46, 0x53, 0x00, 0x00, 0x00, 0x00, 0x07, 0x35, 0x2E, 0x78, 0x2E };
 
@@ -889,7 +889,7 @@ namespace AssetStudio
                 data[i] ^= key[i % key.Length];
             }
 
-            Logger.Verbose("解密少女前线成功!!");
+            Logger.Verbose("解密少女前线2_追放成功!!");
 
             MemoryStream ms = new();
             ms.Write(data);
