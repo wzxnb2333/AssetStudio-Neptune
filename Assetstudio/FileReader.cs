@@ -213,7 +213,7 @@ namespace AssetStudio
                     case GameType.jump群星集结:
                         reader = DecryptCodenameJump(reader);
                         break;
-                    case GameType.少女前线:
+                    case GameType.少女前线2_追放:
                         reader = DecryptGirlsFrontline(reader);
                         break; 
                     case GameType.重返未来1999:
