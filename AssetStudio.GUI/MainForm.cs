@@ -2840,7 +2840,14 @@ namespace AssetStudio.GUI
             }
 
             FMODtimerLabel.Text = $"{ms / 1000 / 60}:{ms / 1000 % 60}.{ms / 10 % 100} / {FMODlenms / 1000 / 60}:{FMODlenms / 1000 % 60}.{FMODlenms / 10 % 100}";
-            FMODprogressBar.Value = (int)(ms * 1000 / FMODlenms);
+
+            if (FMODlenms > 0)
+            {
+                int progressValue = (int)((long)ms * FMODprogressBar.Maximum / FMODlenms);
+                progressValue = Math.Max(FMODprogressBar.Minimum, Math.Min(FMODprogressBar.Maximum, progressValue));
+                FMODprogressBar.Value = progressValue;
+            }
+
             FMODstatusLabel.Text = paused ? "已暂停" : playing ? "正在播放" : "已停止";
 
             if (system.hasHandle() && channel.hasHandle())
