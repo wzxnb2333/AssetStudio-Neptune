@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +19,7 @@ namespace AssetStudio
         public Mhy mhy;
 
         public long Offset;
+        private bool isZZZ20;
 
         private static readonly byte[] Key = new byte[256]
         {
@@ -110,12 +111,9 @@ namespace AssetStudio
 
             try
             {
-                var numWrite = LZ4.Instance.Decompress(compressedBlocksInfo, uncompressedBlocksInfoSpan);
-                if (numWrite != m_Header.uncompressedBlocksInfoSize)
-                {
-                    throw new IOException($"Lz4解压出错, write {numWrite} bytes but expected {m_Header.uncompressedBlocksInfoSize} bytes");
-                }
-
+                int numWrite;
+                numWrite = Decompress(compressedBlocksInfo, uncompressedBlocksInfoSpan);
+                           
                 Logger.Verbose($"将块和目录写入块流...");
                 using var blocksInfoUncompressedStream = new MemoryStream(uncompressedBlocksInfo, 0, (int)m_Header.uncompressedBlocksInfoSize);
                 using var blocksInfoUncompressedReader = new EndianBinaryReader(blocksInfoUncompressedStream);
@@ -201,10 +199,12 @@ namespace AssetStudio
 
                     Logger.Verbose($"解扰块签名{Convert.ToHexString(compressedBytes, 0, 4)}");
                     int num = offset;
-                    int numWrite = LZ4.Instance.Decompress(compressedBytesSpan.Slice(num, compressedBytesSpan.Length - num), uncompressedBytesSpan);
+
+                    int numWrite = Decompress(compressedBytesSpan.Slice(num, compressedBytesSpan.Length - num), uncompressedBytesSpan);
+
                     if (numWrite != uncompressedSize)
                     {
-                        throw new IOException($"Lz4解压出错, write {numWrite} bytes but expected {uncompressedSize} bytes");
+                        throw new IOException($"解压出错, 写入 {numWrite} 字节但期望 {uncompressedSize} 字节");
                     }
 
                     blocksStream.Write(uncompressedBytesSpan);
@@ -213,6 +213,26 @@ namespace AssetStudio
                 {
                     ArrayPool<byte>.Shared.Return(compressedBytes, true);
                     ArrayPool<byte>.Shared.Return(uncompressedBytes, true);
+                }
+            }
+        }
+        private int Decompress(Span<byte> compressed, Span<byte> decompressed)
+        {
+            if (isZZZ20) return OodleHelper.Decompress(compressed, decompressed);
+
+            try { return LZ4.Instance.Decompress(compressed, decompressed); }
+            catch
+            {
+                try
+                {
+                    int numWrite = OodleHelper.Decompress(compressed, decompressed);
+                    isZZZ20 = true;
+                    return numWrite;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error($"Decompression failed: {ex.Message}");
+                    throw;
                 }
             }
         }
